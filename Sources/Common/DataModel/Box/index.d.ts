@@ -1,5 +1,5 @@
-import { vtkObject } from "../../../interfaces";
-import { Bounds, Vector3 } from "../../../types";
+import { vtkObject } from './../../interfaces';
+import { Bounds, Vector3 } from './../../types';
 
 
 export interface IBoxInitialValues {
@@ -44,6 +44,9 @@ export interface vtkBox extends vtkObject {
      * @param {Bounds} bounds The bounds for the box.
      */
     setBounds(bounds: Bounds): void;
+
+    static IntersectWithLine(bounds: Array, p1: Array, p2: Array, t1: Number, t2: Number, 
+                      x1: Array, x2: Array, plane1: Number, plane2: Number);
 }
 
 /**
@@ -60,6 +63,10 @@ export function extend(publicAPI: object, model: object, initialValues?: IBoxIni
  * @param {IBoxInitialValues} [initialValues] for pre-setting some of its content
  */
 export function newInstance(initialValues?: IBoxInitialValues): vtkBox;
+
+
+export function IntersectWithLine(bounds: Array, p1: Array, p2: Array, t1: Number, t2: Number, 
+                                   x1: Array, x2: Array, plane1: Number, plane2: Number): Number;
 
 /**
  * vtkBox provides methods for creating a 1D cubic spline object from given
